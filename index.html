@@ -67,6 +67,39 @@
  .object-choice.selected img{filter:brightness(1.1)}
 }
 @media(max-width:720px) and (max-height:690px){.object-gallery{top:118px;height:125px}}
+
+/* V12 — Altura de stage ajustada al contenido en móvil.
+   La galería determina el inicio de los controles y el escenario termina justo debajo. */
+@media (max-width:720px) {
+  .stage {
+    --gallery-top: 132px;
+    --gallery-height: clamp(125px, 22dvh, 190px);
+    --gallery-gap: 7px;
+    --tabs-height: 35px;
+    --tabs-gap: 7px;
+    --ritual-height: 128px;
+    --bottom-gap: 8px;
+    height: calc(var(--gallery-top) + var(--gallery-height) + var(--gallery-gap) + var(--tabs-height) + var(--tabs-gap) + var(--ritual-height) + var(--bottom-gap));
+    min-height: 0;
+  }
+  .object-gallery {
+    top: var(--gallery-top);
+    height: var(--gallery-height);
+  }
+  .ritual-tabs {
+    top: calc(var(--gallery-top) + var(--gallery-height) + var(--gallery-gap));
+    bottom: auto;
+    height: var(--tabs-height);
+  }
+  .rituals {
+    top: calc(var(--gallery-top) + var(--gallery-height) + var(--gallery-gap) + var(--tabs-height) + var(--tabs-gap));
+    bottom: auto;
+  }
+  .ritual.selected { height: var(--ritual-height); }
+}
+@media (max-width:720px) and (max-height:690px) {
+  .stage { --gallery-top: 118px; --gallery-height: 125px; }
+}
 </style></head>
 <body><div class="app" id="appRoot">
 <header class="header"><div class="brand">LA CASA<br>HAMBRIENTA<small>DUSKMOURN · COMMANDER</small></div><div class="roster" id="roster" aria-label="Participantes"></div><div class="header-tools"><button class="round-button" id="globalHelp" type="button" aria-label="Reglas">i</button><button class="round-button" id="globalHistory" type="button" aria-label="Historial">◷</button><button class="round-button" id="toggleSound" type="button" aria-label="Silenciar sonidos" aria-pressed="true">♫</button></div></header>
